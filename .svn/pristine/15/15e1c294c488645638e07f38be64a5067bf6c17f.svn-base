@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Fcinema" customModuleProvider="target">
+            <connections>
+                <outlet property="txtMatkhau" destination="ftH-qO-lbm" id="ga2-Cg-Kmp"/>
+                <outlet property="txtSdt" destination="fhW-at-wdh" id="Mmg-Hw-8uu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anJ-rH-zze">
+                    <rect key="frame" x="0.0" y="65" width="375" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="IGW-qd-t6d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fhW-at-wdh">
+                    <rect key="frame" x="10" y="135" width="355" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MvF-WU-J1j"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftH-qO-lbm">
+                    <rect key="frame" x="10" y="185" width="355" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="kJc-IN-MIJ"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmc-G6-Hlj">
+                    <rect key="frame" x="30" y="245" width="150" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Rrh-iM-NVu"/>
+                        <constraint firstAttribute="width" constant="150" id="m7a-DQ-GxI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Đăng nhập">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="btnDangNhap:" destination="-1" eventType="touchUpInside" id="lg0-7V-1WQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYk-UT-WS8">
+                    <rect key="frame" x="195" y="245" width="150" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="IcS-ZN-8IT"/>
+                        <constraint firstAttribute="height" constant="40" id="L3E-WT-cja"/>
+                    </constraints>
+                    <state key="normal" title="Đăng ký">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="btnDangKy:" destination="-1" eventType="touchUpInside" id="hAE-sL-HAs"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fhW-at-wdh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="AH8-qu-tJy"/>
+                <constraint firstItem="anJ-rH-zze" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="E93-R6-SOH"/>
+                <constraint firstItem="rmc-G6-Hlj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Fv7-jV-w75"/>
+                <constraint firstItem="fYk-UT-WS8" firstAttribute="top" secondItem="ftH-qO-lbm" secondAttribute="bottom" constant="20" id="IHv-1m-Ytf"/>
+                <constraint firstAttribute="trailing" secondItem="fhW-at-wdh" secondAttribute="trailing" constant="10" id="JiP-Pt-lVT"/>
+                <constraint firstAttribute="trailing" secondItem="ftH-qO-lbm" secondAttribute="trailing" constant="10" id="e8P-7U-koq"/>
+                <constraint firstItem="anJ-rH-zze" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g40-UT-Z6e"/>
+                <constraint firstItem="ftH-qO-lbm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="iKL-2D-JeA"/>
+                <constraint firstItem="ftH-qO-lbm" firstAttribute="top" secondItem="fhW-at-wdh" secondAttribute="bottom" constant="10" id="kIq-EN-0o4"/>
+                <constraint firstAttribute="trailing" secondItem="anJ-rH-zze" secondAttribute="trailing" id="lcx-Xa-0hp"/>
+                <constraint firstItem="fhW-at-wdh" firstAttribute="top" secondItem="anJ-rH-zze" secondAttribute="bottom" constant="20" id="mFw-lu-Tnd"/>
+                <constraint firstItem="rmc-G6-Hlj" firstAttribute="top" secondItem="ftH-qO-lbm" secondAttribute="bottom" constant="20" id="nHi-Bg-T8f"/>
+                <constraint firstAttribute="trailing" secondItem="fYk-UT-WS8" secondAttribute="trailing" constant="30" id="yHs-6j-IfD"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="102.5"/>
+        </view>
+    </objects>
+</document>

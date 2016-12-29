@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "fe673cb4-fa66-f24d-8796-34dd21621313++8269",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "fe673cb4-fa66-f24d-8796-34dd21621313++8269" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "fe673cb4-fa66-f24d-8796-34dd21621313++8269" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F957D095-10A8-41B5-AA58-EC4148A5BFAC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "fe673cb4-fa66-f24d-8796-34dd21621313++8269" : "Group1\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Fcinema",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Fcinema\/Fcinema.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/raiservices.fsoft.fpt.vn\/svn\/C50_HCM_FR_IOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "fe673cb4-fa66-f24d-8796-34dd21621313++8269"
+    }
+  ]
+}

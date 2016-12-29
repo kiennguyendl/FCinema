@@ -1,0 +1,18 @@
+//
+//  SeatCollectionViewCell.swift
+//  Fcinema
+//
+//  Created by Tuan anh Dang on 11/16/16.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+
+class SeatCollectionViewCell: UICollectionViewCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+}

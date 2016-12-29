@@ -1,0 +1,49 @@
+//
+//  NumberTicKetViewController.swift
+//  MockProject1
+//
+//  Created by Tuan anh Dang on 11/13/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class NumberTicKetViewController: UIViewController {
+
+
+    @IBAction func clickCong(_ sender: Any) {
+    }
+    
+    @IBAction func clickTru(_ sender: Any) {
+    }
+    @IBAction func clickNext(_ sender: Any) {
+    }
+
+    @IBOutlet weak var lblTongTien: UILabel!
+    @IBOutlet weak var lblNumberTicKet: UILabel!
+    @IBOutlet weak var txtGioNgayChieu: UILabel!
+    @IBOutlet weak var txtRap: UILabel!
+    @IBOutlet weak var imgFilm: UIImageView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

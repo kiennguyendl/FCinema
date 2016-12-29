@@ -1,0 +1,100 @@
+//
+//  FilmOfCinemaViewController.swift
+//  Fcinema
+//
+//  Created by PhatVQ on 15/11/2016.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+
+class FilmOfCinemaViewController: UIViewController {
+
+    @IBOutlet weak var imgRap: UIImageView!
+    @IBOutlet weak var lbtenRap: UILabel!
+    @IBOutlet weak var lbdiaChi: UILabel!
+    @IBOutlet weak var lbSoDT: UILabel!
+    
+    @IBOutlet weak var tableview: UITableView!
+    
+    var rap:Rap? = nil
+    var arrPhim = [Phim]()
+    var arrLichChieu = [LichChieu]()
+    var arrXuatChieu = [XuatChieu]()
+    var dateNow:String? = nil
+   
+    
+    override func viewDidLoad() {
+//        let dateFormatter = DateFormatter()
+        
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateNow = dateFormatter.string(from: Date())
+        
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.register(UINib(nibName: "FilmOfCineTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        super.viewDidLoad()
+        
+        getData()
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func getData() {
+        // get Cinema's info selected
+        if rap != nil {
+            imgRap.image = UIImage(named: (rap?.hinhRap)!)
+            lbtenRap.text = rap?.tenRap
+            lbdiaChi.text = "🏩" + (rap?.diaChi)!
+            lbSoDT.text = "☎️" + (rap?.soDienThoai)!
+            
+            //get Film of Cinema selected
+            arrPhim = DataManager.defaultDataManager().getRowsFilm("SELECT * From Phim, LichChieu WHERE Phim.id_Phim = LichChieu.id_Phim AND LichChieu.id_Rap = " + String(format: "%d", (rap?.id_Rap)!) + " GROUP BY Phim.id_Phim")
+            
+            if arrPhim.count > 0 {
+            //get LichChieu of Film by Cinema selected
+                arrLichChieu = DataManager.defaultDataManager().getRowsLichChieu("SELECT * FROM LichChieu WHERE LichChieu.id_Rap = " + String(format: "%d", (rap?.id_Rap)!) + "AND LichChieu.id_Phim = " + String(format: "%d", (arrPhim[0].id_Phim)!))
+            }
+            if arrLichChieu.count > 0 {
+                arrLichChieu = arrLichChieu.filter() { $0.ngayChieu! > Date() ? true :false }
+                if arrLichChieu.count > 0 {
+                    arrXuatChieu = DataManager.defaultDataManager().getRowsXuatChieu("select * from XuatChieu where XuatChieu.id_LichChieu = " + String(format: "%d" , arrLichChieu[0].id_LichChieu!))
+                }
+            }
+        }
+    }
+}   
+extension FilmOfCinemaViewController:UITableViewDelegate,UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return arrPhim.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FilmOfCineTableViewCell
+//        let date = dateFormatter.string(from: arrLichChieu[0].ngayChieu!)
+//        cell.lbNgayChieu.text = date
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return " "
+////        return arrPhim[section].tenPhim
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let lb = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.width, height: view.frame.height))
+        lb.textColor = #colorLiteral(red: 0.9942641854, green: 0.330311358, blue: 0.004172504414, alpha: 1)
+        lb.text =  "🎬 " + arrPhim[section].tenPhim!
+        view.addSubview(lb)
+    }
+}

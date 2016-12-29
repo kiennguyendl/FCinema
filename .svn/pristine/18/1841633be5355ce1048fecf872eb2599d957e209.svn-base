@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1773373F1DDAC16E00C6594E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773373D1DDAC16E00C6594E /* MenuViewController.swift */; };
+		177337401DDAC16E00C6594E /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1773373E1DDAC16E00C6594E /* MenuViewController.xib */; };
+		177337461DDAC18C00C6594E /* CinemaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177337421DDAC18C00C6594E /* CinemaTableViewCell.swift */; };
+		177337471DDAC18C00C6594E /* CinemaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177337431DDAC18C00C6594E /* CinemaTableViewCell.xib */; };
+		177337481DDAC18C00C6594E /* CinemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177337441DDAC18C00C6594E /* CinemaViewController.swift */; };
+		177337491DDAC18C00C6594E /* CinemaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177337451DDAC18C00C6594E /* CinemaViewController.xib */; };
+		17C926BB1DDAEEED00686592 /* 4nam2chang1tinhyeu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926A51DDAEEED00686592 /* 4nam2chang1tinhyeu.jpg */; };
+		17C926BC1DDAEEED00686592 /* BHDbitexco.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C926A61DDAEEED00686592 /* BHDbitexco.png */; };
+		17C926BD1DDAEEED00686592 /* CGVbinhtan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926A71DDAEEED00686592 /* CGVbinhtan.jpg */; };
+		17C926BF1DDAEEED00686592 /* cinemax.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926A91DDAEEED00686592 /* cinemax.jpg */; };
+		17C926C01DDAEEED00686592 /* congchienbinh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AA1DDAEEED00686592 /* congchienbinh.jpg */; };
+		17C926C11DDAEEED00686592 /* dautruongamnhac.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AB1DDAEEED00686592 /* dautruongamnhac.jpg */; };
+		17C926C21DDAEEED00686592 /* dongda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AC1DDAEEED00686592 /* dongda.jpg */; };
+		17C926C31DDAEEED00686592 /* F-Cine.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AD1DDAEEED00686592 /* F-Cine.PNG */; };
+		17C926C41DDAEEED00686592 /* galaxykdv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AE1DDAEEED00686592 /* galaxykdv.jpg */; };
+		17C926C51DDAEEED00686592 /* galaxynguyendu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926AF1DDAEEED00686592 /* galaxynguyendu.jpg */; };
+		17C926C61DDAEEED00686592 /* GGVgovap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B01DDAEEED00686592 /* GGVgovap.jpg */; };
+		17C926C71DDAEEED00686592 /* giamcamquydu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B11DDAEEED00686592 /* giamcamquydu.jpg */; };
+		17C926C81DDAEEED00686592 /* hinhnhan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B21DDAEEED00686592 /* hinhnhan.jpg */; };
+		17C926C91DDAEEED00686592 /* lottediamond.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B31DDAEEED00686592 /* lottediamond.jpg */; };
+		17C926CA1DDAEEED00686592 /* lottenowzone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B41DDAEEED00686592 /* lottenowzone.jpg */; };
+		17C926CB1DDAEEED00686592 /* manudaichien.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B51DDAEEED00686592 /* manudaichien.jpg */; };
+		17C926CC1DDAEEED00686592 /* maxsteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B61DDAEEED00686592 /* maxsteel.jpg */; };
+		17C926CD1DDAEEED00686592 /* moana.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B71DDAEEED00686592 /* moana.jpg */; };
+		17C926CE1DDAEEED00686592 /* quyluntinhnghich.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B81DDAEEED00686592 /* quyluntinhnghich.jpg */; };
+		17C926CF1DDAEEED00686592 /* sumenhtraitim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926B91DDAEEED00686592 /* sumenhtraitim.jpg */; };
+		17C926D01DDAEEED00686592 /* vesisaigon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C926BA1DDAEEED00686592 /* vesisaigon.jpg */; };
+		6D29B98E1DDAAB1B005A84B7 /* DetailCinemaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9861DDAAB1B005A84B7 /* DetailCinemaTableViewCell.swift */; };
+		6D29B98F1DDAAB1B005A84B7 /* DetailCinemaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B9871DDAAB1B005A84B7 /* DetailCinemaTableViewCell.xib */; };
+		6D29B9901DDAAB1B005A84B7 /* DetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9881DDAAB1B005A84B7 /* DetailContentTableViewCell.swift */; };
+		6D29B9911DDAAB1B005A84B7 /* DetailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B9891DDAAB1B005A84B7 /* DetailContentTableViewCell.xib */; };
+		6D29B9921DDAAB1B005A84B7 /* DetailFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B98A1DDAAB1B005A84B7 /* DetailFilmViewController.swift */; };
+		6D29B9931DDAAB1B005A84B7 /* DetailFilmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B98B1DDAAB1B005A84B7 /* DetailFilmViewController.xib */; };
+		6D29B9941DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B98C1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.swift */; };
+		6D29B9951DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B98D1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.xib */; };
+		6D29B9991DDAAB70005A84B7 /* SelectSeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9971DDAAB70005A84B7 /* SelectSeatViewController.swift */; };
+		6D29B99A1DDAAB70005A84B7 /* SelectSeatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B9981DDAAB70005A84B7 /* SelectSeatViewController.xib */; };
+		6D29B99E1DDAABAF005A84B7 /* NumberTicKetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B99C1DDAABAF005A84B7 /* NumberTicKetViewController.swift */; };
+		6D29B99F1DDAABAF005A84B7 /* NumberTicKetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D29B99D1DDAABAF005A84B7 /* NumberTicKetViewController.xib */; };
+		6D29B9AA1DDAC4DB005A84B7 /* LichChieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9A71DDAC4DB005A84B7 /* LichChieu.swift */; };
+		6D29B9AB1DDAC4DB005A84B7 /* Rap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9A81DDAC4DB005A84B7 /* Rap.swift */; };
+		6D29B9AC1DDAC4DB005A84B7 /* XuatChieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29B9A91DDAC4DB005A84B7 /* XuatChieu.swift */; };
+		6DD1FB3F1DD9F94F00DE0FB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD1FB3E1DD9F94F00DE0FB7 /* AppDelegate.swift */; };
+		6DD1FB461DD9F94F00DE0FB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DD1FB451DD9F94F00DE0FB7 /* Assets.xcassets */; };
+		6DD1FB491DD9F94F00DE0FB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD1FB471DD9F94F00DE0FB7 /* LaunchScreen.storyboard */; };
+		6DD1FB511DD9F96500DE0FB7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD1FB501DD9F96500DE0FB7 /* DataManager.swift */; };
+		6DD1FB541DD9FA6400DE0FB7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD1FB531DD9FA6400DE0FB7 /* libsqlite3.tbd */; };
+		6DD1FB5B1DDA13C500DE0FB7 /* Phim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD1FB5A1DDA13C500DE0FB7 /* Phim.swift */; };
+		F1C452A41DDAB5DF005E1540 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A01DDAB5DF005E1540 /* HomeViewController.swift */; };
+		F1C452A51DDAB5DF005E1540 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C452A11DDAB5DF005E1540 /* HomeViewController.xib */; };
+		F1C452A61DDAB5DF005E1540 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A21DDAB5DF005E1540 /* TableViewCell.swift */; };
+		F1C452A71DDAB5DF005E1540 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C452A31DDAB5DF005E1540 /* TableViewCell.xib */; };
+		F1C452AB1DDAB631005E1540 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452A91DDAB631005E1540 /* LoginViewController.swift */; };
+		F1C452AC1DDAB631005E1540 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C452AA1DDAB631005E1540 /* LoginViewController.xib */; };
+		F1C452B21DDAB664005E1540 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452B01DDAB664005E1540 /* RegisterViewController.swift */; };
+		F1C452B31DDAB664005E1540 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C452B11DDAB664005E1540 /* RegisterViewController.xib */; };
+		F1C452B71DDAB67F005E1540 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C452B51DDAB67F005E1540 /* UserInfoViewController.swift */; };
+		F1C452B81DDAB67F005E1540 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C452B61DDAB67F005E1540 /* UserInfoViewController.xib */; };
+		F1C452C11DDAB70E005E1540 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C452BC1DDAB70E005E1540 /* menuicon.png */; };
+		F1C452CC1DDAB730005E1540 /* user-icon-32327.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C452C91DDAB730005E1540 /* user-icon-32327.png */; };
+		F1C452CD1DDAB730005E1540 /* usericon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C452CA1DDAB730005E1540 /* usericon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1773373D1DDAC16E00C6594E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = MenuViewController/MenuViewController.swift; sourceTree = "<group>"; };
+		1773373E1DDAC16E00C6594E /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = MenuViewController/MenuViewController.xib; sourceTree = "<group>"; };
+		177337421DDAC18C00C6594E /* CinemaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CinemaTableViewCell.swift; path = CinemaViewController/CinemaTableViewCell.swift; sourceTree = "<group>"; };
+		177337431DDAC18C00C6594E /* CinemaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CinemaTableViewCell.xib; path = CinemaViewController/CinemaTableViewCell.xib; sourceTree = "<group>"; };
+		177337441DDAC18C00C6594E /* CinemaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CinemaViewController.swift; path = CinemaViewController/CinemaViewController.swift; sourceTree = "<group>"; };
+		177337451DDAC18C00C6594E /* CinemaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CinemaViewController.xib; path = CinemaViewController/CinemaViewController.xib; sourceTree = "<group>"; };
+		17C926A21DDAEBA300686592 /* FCinema.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = FCinema.sqlite; sourceTree = "<group>"; };
+		17C926A51DDAEEED00686592 /* 4nam2chang1tinhyeu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4nam2chang1tinhyeu.jpg; sourceTree = "<group>"; };
+		17C926A61DDAEEED00686592 /* BHDbitexco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BHDbitexco.png; sourceTree = "<group>"; };
+		17C926A71DDAEEED00686592 /* CGVbinhtan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CGVbinhtan.jpg; sourceTree = "<group>"; };
+		17C926A91DDAEEED00686592 /* cinemax.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cinemax.jpg; sourceTree = "<group>"; };
+		17C926AA1DDAEEED00686592 /* congchienbinh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = congchienbinh.jpg; sourceTree = "<group>"; };
+		17C926AB1DDAEEED00686592 /* dautruongamnhac.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dautruongamnhac.jpg; sourceTree = "<group>"; };
+		17C926AC1DDAEEED00686592 /* dongda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dongda.jpg; sourceTree = "<group>"; };
+		17C926AD1DDAEEED00686592 /* F-Cine.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "F-Cine.PNG"; sourceTree = "<group>"; };
+		17C926AE1DDAEEED00686592 /* galaxykdv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxykdv.jpg; sourceTree = "<group>"; };
+		17C926AF1DDAEEED00686592 /* galaxynguyendu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = galaxynguyendu.jpg; sourceTree = "<group>"; };
+		17C926B01DDAEEED00686592 /* GGVgovap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GGVgovap.jpg; sourceTree = "<group>"; };
+		17C926B11DDAEEED00686592 /* giamcamquydu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = giamcamquydu.jpg; sourceTree = "<group>"; };
+		17C926B21DDAEEED00686592 /* hinhnhan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hinhnhan.jpg; sourceTree = "<group>"; };
+		17C926B31DDAEEED00686592 /* lottediamond.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lottediamond.jpg; sourceTree = "<group>"; };
+		17C926B41DDAEEED00686592 /* lottenowzone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lottenowzone.jpg; sourceTree = "<group>"; };
+		17C926B51DDAEEED00686592 /* manudaichien.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manudaichien.jpg; sourceTree = "<group>"; };
+		17C926B61DDAEEED00686592 /* maxsteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maxsteel.jpg; sourceTree = "<group>"; };
+		17C926B71DDAEEED00686592 /* moana.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moana.jpg; sourceTree = "<group>"; };
+		17C926B81DDAEEED00686592 /* quyluntinhnghich.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quyluntinhnghich.jpg; sourceTree = "<group>"; };
+		17C926B91DDAEEED00686592 /* sumenhtraitim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sumenhtraitim.jpg; sourceTree = "<group>"; };
+		17C926BA1DDAEEED00686592 /* vesisaigon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vesisaigon.jpg; sourceTree = "<group>"; };
+		6D29B9861DDAAB1B005A84B7 /* DetailCinemaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailCinemaTableViewCell.swift; path = DetailFilmViewController/DetailCinemaTableViewCell.swift; sourceTree = "<group>"; };
+		6D29B9871DDAAB1B005A84B7 /* DetailCinemaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailCinemaTableViewCell.xib; path = DetailFilmViewController/DetailCinemaTableViewCell.xib; sourceTree = "<group>"; };
+		6D29B9881DDAAB1B005A84B7 /* DetailContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailContentTableViewCell.swift; path = DetailFilmViewController/DetailContentTableViewCell.swift; sourceTree = "<group>"; };
+		6D29B9891DDAAB1B005A84B7 /* DetailContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailContentTableViewCell.xib; path = DetailFilmViewController/DetailContentTableViewCell.xib; sourceTree = "<group>"; };
+		6D29B98A1DDAAB1B005A84B7 /* DetailFilmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailFilmViewController.swift; path = DetailFilmViewController/DetailFilmViewController.swift; sourceTree = "<group>"; };
+		6D29B98B1DDAAB1B005A84B7 /* DetailFilmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailFilmViewController.xib; path = DetailFilmViewController/DetailFilmViewController.xib; sourceTree = "<group>"; };
+		6D29B98C1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTimeStartTableViewCell.swift; path = DetailFilmViewController/DetailTimeStartTableViewCell.swift; sourceTree = "<group>"; };
+		6D29B98D1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailTimeStartTableViewCell.xib; path = DetailFilmViewController/DetailTimeStartTableViewCell.xib; sourceTree = "<group>"; };
+		6D29B9971DDAAB70005A84B7 /* SelectSeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectSeatViewController.swift; path = SelectSeatViewController/SelectSeatViewController.swift; sourceTree = "<group>"; };
+		6D29B9981DDAAB70005A84B7 /* SelectSeatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectSeatViewController.xib; path = SelectSeatViewController/SelectSeatViewController.xib; sourceTree = "<group>"; };
+		6D29B99C1DDAABAF005A84B7 /* NumberTicKetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberTicKetViewController.swift; path = NumberTicKetViewController/NumberTicKetViewController.swift; sourceTree = "<group>"; };
+		6D29B99D1DDAABAF005A84B7 /* NumberTicKetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NumberTicKetViewController.xib; path = NumberTicKetViewController/NumberTicKetViewController.xib; sourceTree = "<group>"; };
+		6D29B9A71DDAC4DB005A84B7 /* LichChieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LichChieu.swift; sourceTree = "<group>"; };
+		6D29B9A81DDAC4DB005A84B7 /* Rap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rap.swift; sourceTree = "<group>"; };
+		6D29B9A91DDAC4DB005A84B7 /* XuatChieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XuatChieu.swift; sourceTree = "<group>"; };
+		6DD1FB3B1DD9F94F00DE0FB7 /* Fcinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fcinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DD1FB3E1DD9F94F00DE0FB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6DD1FB451DD9F94F00DE0FB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6DD1FB481DD9F94F00DE0FB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6DD1FB4A1DD9F94F00DE0FB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DD1FB501DD9F96500DE0FB7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6DD1FB531DD9FA6400DE0FB7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		6DD1FB551DD9FB0700DE0FB7 /* Fcinema-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fcinema-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DD1FB5A1DDA13C500DE0FB7 /* Phim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phim.swift; sourceTree = "<group>"; };
+		F1C452A01DDAB5DF005E1540 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = HomViewController/HomeViewController.swift; sourceTree = "<group>"; };
+		F1C452A11DDAB5DF005E1540 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = HomViewController/HomeViewController.xib; sourceTree = "<group>"; };
+		F1C452A21DDAB5DF005E1540 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = HomViewController/TableViewCell.swift; sourceTree = "<group>"; };
+		F1C452A31DDAB5DF005E1540 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = HomViewController/TableViewCell.xib; sourceTree = "<group>"; };
+		F1C452A91DDAB631005E1540 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = LoginViewController/LoginViewController.swift; sourceTree = "<group>"; };
+		F1C452AA1DDAB631005E1540 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = LoginViewController/LoginViewController.xib; sourceTree = "<group>"; };
+		F1C452B01DDAB664005E1540 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = RegisterViewController/RegisterViewController.swift; sourceTree = "<group>"; };
+		F1C452B11DDAB664005E1540 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController.xib; path = RegisterViewController/RegisterViewController.xib; sourceTree = "<group>"; };
+		F1C452B51DDAB67F005E1540 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewController.swift; path = UserInfoViewController/UserInfoViewController.swift; sourceTree = "<group>"; };
+		F1C452B61DDAB67F005E1540 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserInfoViewController.xib; path = UserInfoViewController/UserInfoViewController.xib; sourceTree = "<group>"; };
+		F1C452BC1DDAB70E005E1540 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuicon.png; path = Picture/menuicon.png; sourceTree = SOURCE_ROOT; };
+		F1C452C91DDAB730005E1540 /* user-icon-32327.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user-icon-32327.png"; path = "Picture/user-icon-32327.png"; sourceTree = SOURCE_ROOT; };
+		F1C452CA1DDAB730005E1540 /* usericon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = usericon.png; path = Picture/usericon.png; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6DD1FB381DD9F94F00DE0FB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DD1FB541DD9FA6400DE0FB7 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1773373C1DDAC0D100C6594E /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1773373D1DDAC16E00C6594E /* MenuViewController.swift */,
+				1773373E1DDAC16E00C6594E /* MenuViewController.xib */,
+			);
+			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		177337411DDAC17200C6594E /* CinemaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				177337421DDAC18C00C6594E /* CinemaTableViewCell.swift */,
+				177337431DDAC18C00C6594E /* CinemaTableViewCell.xib */,
+				177337441DDAC18C00C6594E /* CinemaViewController.swift */,
+				177337451DDAC18C00C6594E /* CinemaViewController.xib */,
+			);
+			name = CinemaViewController;
+			sourceTree = "<group>";
+		};
+		177337621DDAE52700C6594E /* Rap */ = {
+			isa = PBXGroup;
+			children = (
+				17C926A61DDAEEED00686592 /* BHDbitexco.png */,
+				17C926A71DDAEEED00686592 /* CGVbinhtan.jpg */,
+				17C926A91DDAEEED00686592 /* cinemax.jpg */,
+				17C926AC1DDAEEED00686592 /* dongda.jpg */,
+				17C926AD1DDAEEED00686592 /* F-Cine.PNG */,
+				17C926AE1DDAEEED00686592 /* galaxykdv.jpg */,
+				17C926AF1DDAEEED00686592 /* galaxynguyendu.jpg */,
+				17C926B01DDAEEED00686592 /* GGVgovap.jpg */,
+				17C926B31DDAEEED00686592 /* lottediamond.jpg */,
+				17C926B41DDAEEED00686592 /* lottenowzone.jpg */,
+			);
+			name = Rap;
+			sourceTree = "<group>";
+		};
+		6D29B97F1DDAA7B8005A84B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6D29B9A71DDAC4DB005A84B7 /* LichChieu.swift */,
+				6D29B9A81DDAC4DB005A84B7 /* Rap.swift */,
+				6D29B9A91DDAC4DB005A84B7 /* XuatChieu.swift */,
+				6DD1FB5A1DDA13C500DE0FB7 /* Phim.swift */,
+				6DD1FB501DD9F96500DE0FB7 /* DataManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6D29B9811DDAA9DB005A84B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6DD1FB3E1DD9F94F00DE0FB7 /* AppDelegate.swift */,
+				1773373C1DDAC0D100C6594E /* MenuViewController */,
+				177337411DDAC17200C6594E /* CinemaViewController */,
+				F1C452B41DDAB669005E1540 /* UserInfoViewController */,
+				F1C452AD1DDAB63A005E1540 /* RegisterViewController */,
+				F1C452A81DDAB618005E1540 /* LoginViewController */,
+				F1C4529D1DDAB5B3005E1540 /* HomeViewController */,
+				6D29B99B1DDAABA4005A84B7 /* NumberTicKetViewController */,
+				6D29B9961DDAAB5A005A84B7 /* SelectSeatViewController */,
+				6D29B9851DDAAAEC005A84B7 /* DetailFilmViewController */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6D29B9821DDAA9FB005A84B7 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452B91DDAB6E6005E1540 /* Picture */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		6D29B9831DDAAA08005A84B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6DD1FB471DD9F94F00DE0FB7 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6D29B9851DDAAAEC005A84B7 /* DetailFilmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D29B9861DDAAB1B005A84B7 /* DetailCinemaTableViewCell.swift */,
+				6D29B9871DDAAB1B005A84B7 /* DetailCinemaTableViewCell.xib */,
+				6D29B9881DDAAB1B005A84B7 /* DetailContentTableViewCell.swift */,
+				6D29B9891DDAAB1B005A84B7 /* DetailContentTableViewCell.xib */,
+				6D29B98A1DDAAB1B005A84B7 /* DetailFilmViewController.swift */,
+				6D29B98B1DDAAB1B005A84B7 /* DetailFilmViewController.xib */,
+				6D29B98C1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.swift */,
+				6D29B98D1DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.xib */,
+			);
+			name = DetailFilmViewController;
+			sourceTree = "<group>";
+		};
+		6D29B9961DDAAB5A005A84B7 /* SelectSeatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D29B9971DDAAB70005A84B7 /* SelectSeatViewController.swift */,
+				6D29B9981DDAAB70005A84B7 /* SelectSeatViewController.xib */,
+			);
+			name = SelectSeatViewController;
+			sourceTree = "<group>";
+		};
+		6D29B99B1DDAABA4005A84B7 /* NumberTicKetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6D29B99C1DDAABAF005A84B7 /* NumberTicKetViewController.swift */,
+				6D29B99D1DDAABAF005A84B7 /* NumberTicKetViewController.xib */,
+			);
+			name = NumberTicKetViewController;
+			sourceTree = "<group>";
+		};
+		6DD1FB321DD9F94F00DE0FB7 = {
+			isa = PBXGroup;
+			children = (
+				6DD1FB3D1DD9F94F00DE0FB7 /* Fcinema */,
+				6DD1FB3C1DD9F94F00DE0FB7 /* Products */,
+				6DD1FB521DD9FA6300DE0FB7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6DD1FB3C1DD9F94F00DE0FB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DD1FB3B1DD9F94F00DE0FB7 /* Fcinema.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6DD1FB3D1DD9F94F00DE0FB7 /* Fcinema */ = {
+			isa = PBXGroup;
+			children = (
+				17C926A21DDAEBA300686592 /* FCinema.sqlite */,
+				6D29B9831DDAAA08005A84B7 /* View */,
+				6D29B9821DDAA9FB005A84B7 /* Support */,
+				6D29B9811DDAA9DB005A84B7 /* Controller */,
+				6D29B97F1DDAA7B8005A84B7 /* Model */,
+			);
+			path = Fcinema;
+			sourceTree = "<group>";
+		};
+		6DD1FB521DD9FA6300DE0FB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DD1FB531DD9FA6400DE0FB7 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1C4529D1DDAB5B3005E1540 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452A01DDAB5DF005E1540 /* HomeViewController.swift */,
+				F1C452A11DDAB5DF005E1540 /* HomeViewController.xib */,
+				F1C452A21DDAB5DF005E1540 /* TableViewCell.swift */,
+				F1C452A31DDAB5DF005E1540 /* TableViewCell.xib */,
+			);
+			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		F1C452A81DDAB618005E1540 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452A91DDAB631005E1540 /* LoginViewController.swift */,
+				F1C452AA1DDAB631005E1540 /* LoginViewController.xib */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		F1C452AD1DDAB63A005E1540 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452B01DDAB664005E1540 /* RegisterViewController.swift */,
+				F1C452B11DDAB664005E1540 /* RegisterViewController.xib */,
+			);
+			name = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		F1C452B41DDAB669005E1540 /* UserInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452B51DDAB67F005E1540 /* UserInfoViewController.swift */,
+				F1C452B61DDAB67F005E1540 /* UserInfoViewController.xib */,
+			);
+			name = UserInfoViewController;
+			sourceTree = "<group>";
+		};
+		F1C452B91DDAB6E6005E1540 /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				177337621DDAE52700C6594E /* Rap */,
+				6DD1FB451DD9F94F00DE0FB7 /* Assets.xcassets */,
+				6DD1FB551DD9FB0700DE0FB7 /* Fcinema-Bridging-Header.h */,
+				6DD1FB4A1DD9F94F00DE0FB7 /* Info.plist */,
+				F1C452BB1DDAB6F6005E1540 /* Phim */,
+				F1C452BA1DDAB6EF005E1540 /* icon */,
+			);
+			name = Picture;
+			sourceTree = "<group>";
+		};
+		F1C452BA1DDAB6EF005E1540 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				F1C452C91DDAB730005E1540 /* user-icon-32327.png */,
+				F1C452CA1DDAB730005E1540 /* usericon.png */,
+				F1C452BC1DDAB70E005E1540 /* menuicon.png */,
+			);
+			name = icon;
+			sourceTree = "<group>";
+		};
+		F1C452BB1DDAB6F6005E1540 /* Phim */ = {
+			isa = PBXGroup;
+			children = (
+				17C926A51DDAEEED00686592 /* 4nam2chang1tinhyeu.jpg */,
+				17C926AA1DDAEEED00686592 /* congchienbinh.jpg */,
+				17C926AB1DDAEEED00686592 /* dautruongamnhac.jpg */,
+				17C926B11DDAEEED00686592 /* giamcamquydu.jpg */,
+				17C926B21DDAEEED00686592 /* hinhnhan.jpg */,
+				17C926B51DDAEEED00686592 /* manudaichien.jpg */,
+				17C926B61DDAEEED00686592 /* maxsteel.jpg */,
+				17C926B71DDAEEED00686592 /* moana.jpg */,
+				17C926B81DDAEEED00686592 /* quyluntinhnghich.jpg */,
+				17C926B91DDAEEED00686592 /* sumenhtraitim.jpg */,
+				17C926BA1DDAEEED00686592 /* vesisaigon.jpg */,
+			);
+			name = Phim;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6DD1FB3A1DD9F94F00DE0FB7 /* Fcinema */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DD1FB4D1DD9F94F00DE0FB7 /* Build configuration list for PBXNativeTarget "Fcinema" */;
+			buildPhases = (
+				6DD1FB371DD9F94F00DE0FB7 /* Sources */,
+				6DD1FB381DD9F94F00DE0FB7 /* Frameworks */,
+				6DD1FB391DD9F94F00DE0FB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fcinema;
+			productName = Fcinema;
+			productReference = 6DD1FB3B1DD9F94F00DE0FB7 /* Fcinema.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6DD1FB331DD9F94F00DE0FB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Tuan anh Dang";
+				TargetAttributes = {
+					6DD1FB3A1DD9F94F00DE0FB7 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6DD1FB361DD9F94F00DE0FB7 /* Build configuration list for PBXProject "Fcinema" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6DD1FB321DD9F94F00DE0FB7;
+			productRefGroup = 6DD1FB3C1DD9F94F00DE0FB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DD1FB3A1DD9F94F00DE0FB7 /* Fcinema */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6DD1FB391DD9F94F00DE0FB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D29B9911DDAAB1B005A84B7 /* DetailContentTableViewCell.xib in Resources */,
+				F1C452A71DDAB5DF005E1540 /* TableViewCell.xib in Resources */,
+				17C926CF1DDAEEED00686592 /* sumenhtraitim.jpg in Resources */,
+				F1C452AC1DDAB631005E1540 /* LoginViewController.xib in Resources */,
+				6DD1FB491DD9F94F00DE0FB7 /* LaunchScreen.storyboard in Resources */,
+				17C926CE1DDAEEED00686592 /* quyluntinhnghich.jpg in Resources */,
+				17C926C41DDAEEED00686592 /* galaxykdv.jpg in Resources */,
+				17C926C91DDAEEED00686592 /* lottediamond.jpg in Resources */,
+				6DD1FB461DD9F94F00DE0FB7 /* Assets.xcassets in Resources */,
+				17C926C71DDAEEED00686592 /* giamcamquydu.jpg in Resources */,
+				6D29B99F1DDAABAF005A84B7 /* NumberTicKetViewController.xib in Resources */,
+				177337401DDAC16E00C6594E /* MenuViewController.xib in Resources */,
+				17C926BF1DDAEEED00686592 /* cinemax.jpg in Resources */,
+				6D29B99A1DDAAB70005A84B7 /* SelectSeatViewController.xib in Resources */,
+				17C926C61DDAEEED00686592 /* GGVgovap.jpg in Resources */,
+				6D29B98F1DDAAB1B005A84B7 /* DetailCinemaTableViewCell.xib in Resources */,
+				F1C452CC1DDAB730005E1540 /* user-icon-32327.png in Resources */,
+				6D29B9951DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.xib in Resources */,
+				177337491DDAC18C00C6594E /* CinemaViewController.xib in Resources */,
+				F1C452B81DDAB67F005E1540 /* UserInfoViewController.xib in Resources */,
+				17C926C21DDAEEED00686592 /* dongda.jpg in Resources */,
+				17C926C11DDAEEED00686592 /* dautruongamnhac.jpg in Resources */,
+				6D29B9931DDAAB1B005A84B7 /* DetailFilmViewController.xib in Resources */,
+				17C926CD1DDAEEED00686592 /* moana.jpg in Resources */,
+				F1C452CD1DDAB730005E1540 /* usericon.png in Resources */,
+				17C926C31DDAEEED00686592 /* F-Cine.PNG in Resources */,
+				17C926C01DDAEEED00686592 /* congchienbinh.jpg in Resources */,
+				17C926C51DDAEEED00686592 /* galaxynguyendu.jpg in Resources */,
+				17C926BB1DDAEEED00686592 /* 4nam2chang1tinhyeu.jpg in Resources */,
+				F1C452C11DDAB70E005E1540 /* menuicon.png in Resources */,
+				17C926D01DDAEEED00686592 /* vesisaigon.jpg in Resources */,
+				177337471DDAC18C00C6594E /* CinemaTableViewCell.xib in Resources */,
+				F1C452A51DDAB5DF005E1540 /* HomeViewController.xib in Resources */,
+				17C926CC1DDAEEED00686592 /* maxsteel.jpg in Resources */,
+				17C926C81DDAEEED00686592 /* hinhnhan.jpg in Resources */,
+				17C926BD1DDAEEED00686592 /* CGVbinhtan.jpg in Resources */,
+				F1C452B31DDAB664005E1540 /* RegisterViewController.xib in Resources */,
+				17C926CB1DDAEEED00686592 /* manudaichien.jpg in Resources */,
+				17C926BC1DDAEEED00686592 /* BHDbitexco.png in Resources */,
+				17C926CA1DDAEEED00686592 /* lottenowzone.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DD1FB371DD9F94F00DE0FB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1C452AB1DDAB631005E1540 /* LoginViewController.swift in Sources */,
+				1773373F1DDAC16E00C6594E /* MenuViewController.swift in Sources */,
+				F1C452B71DDAB67F005E1540 /* UserInfoViewController.swift in Sources */,
+				6DD1FB511DD9F96500DE0FB7 /* DataManager.swift in Sources */,
+				177337461DDAC18C00C6594E /* CinemaTableViewCell.swift in Sources */,
+				6D29B9921DDAAB1B005A84B7 /* DetailFilmViewController.swift in Sources */,
+				6D29B98E1DDAAB1B005A84B7 /* DetailCinemaTableViewCell.swift in Sources */,
+				6D29B9941DDAAB1B005A84B7 /* DetailTimeStartTableViewCell.swift in Sources */,
+				6D29B9AA1DDAC4DB005A84B7 /* LichChieu.swift in Sources */,
+				6DD1FB3F1DD9F94F00DE0FB7 /* AppDelegate.swift in Sources */,
+				F1C452A41DDAB5DF005E1540 /* HomeViewController.swift in Sources */,
+				F1C452A61DDAB5DF005E1540 /* TableViewCell.swift in Sources */,
+				177337481DDAC18C00C6594E /* CinemaViewController.swift in Sources */,
+				6D29B9991DDAAB70005A84B7 /* SelectSeatViewController.swift in Sources */,
+				6D29B9AC1DDAC4DB005A84B7 /* XuatChieu.swift in Sources */,
+				6DD1FB5B1DDA13C500DE0FB7 /* Phim.swift in Sources */,
+				6D29B9AB1DDAC4DB005A84B7 /* Rap.swift in Sources */,
+				F1C452B21DDAB664005E1540 /* RegisterViewController.swift in Sources */,
+				6D29B99E1DDAABAF005A84B7 /* NumberTicKetViewController.swift in Sources */,
+				6D29B9901DDAAB1B005A84B7 /* DetailContentTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6DD1FB471DD9F94F00DE0FB7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6DD1FB481DD9F94F00DE0FB7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6DD1FB4B1DD9F94F00DE0FB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6DD1FB4C1DD9F94F00DE0FB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DD1FB4E1DD9F94F00DE0FB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Fcinema/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AnhDang.Fcinema;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fcinema/Fcinema-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6DD1FB4F1DD9F94F00DE0FB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Fcinema/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AnhDang.Fcinema;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fcinema/Fcinema-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DD1FB361DD9F94F00DE0FB7 /* Build configuration list for PBXProject "Fcinema" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DD1FB4B1DD9F94F00DE0FB7 /* Debug */,
+				6DD1FB4C1DD9F94F00DE0FB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DD1FB4D1DD9F94F00DE0FB7 /* Build configuration list for PBXNativeTarget "Fcinema" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DD1FB4E1DD9F94F00DE0FB7 /* Debug */,
+				6DD1FB4F1DD9F94F00DE0FB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6DD1FB331DD9F94F00DE0FB7 /* Project object */;
+}

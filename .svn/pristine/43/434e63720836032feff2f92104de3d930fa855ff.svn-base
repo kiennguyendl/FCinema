@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailFilmViewController" customModule="MockProject1" customModuleProvider="target">
+            <connections>
+                <outlet property="imgFilm" destination="nxW-Py-HrG" id="Dqu-bb-dQO"/>
+                <outlet property="tableDetailFilm" destination="cbD-T0-nVw" id="cNy-hj-fus"/>
+                <outlet property="txtDaoDien" destination="r8e-cU-wYc" id="1cf-Sz-g51"/>
+                <outlet property="txtFilmName" destination="we1-Oa-lE1" id="f3Y-bC-DPO"/>
+                <outlet property="txtKhoiChieu" destination="Hw6-WS-r6s" id="TbD-fb-xsq"/>
+                <outlet property="txtTenRap" destination="dyi-Wh-7bQ" id="y0T-Rf-wDR"/>
+                <outlet property="txtTheLoai" destination="Psv-Wa-Fm6" id="vmL-WA-bMM"/>
+                <outlet property="txtThoiLuong" destination="f7M-Q3-Ecq" id="IiT-gt-iAS"/>
+                <outlet property="view" destination="w3u-JG-yJN" id="S7N-fK-QyS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="w3u-JG-yJN">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHU-j4-Qnv">
+                    <rect key="frame" x="0.0" y="64" width="375" height="159"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nxW-Py-HrG">
+                            <rect key="frame" x="8" y="8" width="149" height="143"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dragon Nest" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we1-Oa-lE1">
+                            <rect key="frame" x="165" y="14" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cụm Rạp: Galaxy Nguyễn Du" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-Wh-7bQ">
+                            <rect key="frame" x="165" y="134" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đạo Diễn: Regis Wargnier" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8e-cU-wYc">
+                            <rect key="frame" x="165" y="110" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời Lượng: 152 phút" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7M-Q3-Ecq">
+                            <rect key="frame" x="165" y="86" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thể Loại: Tâm lý, Tình Cảm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-Wa-Fm6">
+                            <rect key="frame" x="165" y="62" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thể Loại: 4/11/2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-WS-r6s">
+                            <rect key="frame" x="165" y="38" width="200" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Hw6-WS-r6s" firstAttribute="top" secondItem="we1-Oa-lE1" secondAttribute="bottom" constant="8" id="3AN-f3-2X3"/>
+                        <constraint firstItem="Psv-Wa-Fm6" firstAttribute="top" secondItem="Hw6-WS-r6s" secondAttribute="bottom" constant="8" id="758-jF-QX8"/>
+                        <constraint firstItem="dyi-Wh-7bQ" firstAttribute="leading" secondItem="we1-Oa-lE1" secondAttribute="leading" id="8Vn-Gw-7f0"/>
+                        <constraint firstItem="dyi-Wh-7bQ" firstAttribute="top" secondItem="r8e-cU-wYc" secondAttribute="bottom" constant="8" id="DGS-8J-G82"/>
+                        <constraint firstItem="nxW-Py-HrG" firstAttribute="width" secondItem="lHU-j4-Qnv" secondAttribute="width" multiplier="0.35" constant="17.75" id="ErB-ZU-QDI"/>
+                        <constraint firstAttribute="bottom" secondItem="dyi-Wh-7bQ" secondAttribute="bottom" constant="9" id="FUL-5M-vpf"/>
+                        <constraint firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" constant="10" id="Iye-gY-ZCj"/>
+                        <constraint firstItem="f7M-Q3-Ecq" firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" id="O88-ie-cHr"/>
+                        <constraint firstItem="Hw6-WS-r6s" firstAttribute="leading" secondItem="we1-Oa-lE1" secondAttribute="leading" id="Qnt-5W-Pbk"/>
+                        <constraint firstItem="r8e-cU-wYc" firstAttribute="leading" secondItem="we1-Oa-lE1" secondAttribute="leading" id="Qsv-WW-kFt"/>
+                        <constraint firstItem="r8e-cU-wYc" firstAttribute="top" secondItem="f7M-Q3-Ecq" secondAttribute="bottom" constant="8" id="XFo-p2-xW1"/>
+                        <constraint firstItem="r8e-cU-wYc" firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" id="XV0-bF-qB9"/>
+                        <constraint firstItem="we1-Oa-lE1" firstAttribute="top" secondItem="lHU-j4-Qnv" secondAttribute="top" constant="14" id="bnL-PA-bDU"/>
+                        <constraint firstAttribute="bottom" secondItem="nxW-Py-HrG" secondAttribute="bottom" constant="8" id="cAJ-fn-YI0"/>
+                        <constraint firstItem="f7M-Q3-Ecq" firstAttribute="leading" secondItem="we1-Oa-lE1" secondAttribute="leading" id="d4v-oA-cz9"/>
+                        <constraint firstItem="Psv-Wa-Fm6" firstAttribute="leading" secondItem="we1-Oa-lE1" secondAttribute="leading" id="fXg-Zp-r2S"/>
+                        <constraint firstItem="we1-Oa-lE1" firstAttribute="leading" secondItem="nxW-Py-HrG" secondAttribute="trailing" constant="8" id="gK0-Ep-fyR"/>
+                        <constraint firstItem="Hw6-WS-r6s" firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" id="lQK-SC-Q1U"/>
+                        <constraint firstItem="nxW-Py-HrG" firstAttribute="leading" secondItem="lHU-j4-Qnv" secondAttribute="leading" constant="8" id="oTS-2j-jwB"/>
+                        <constraint firstItem="f7M-Q3-Ecq" firstAttribute="top" secondItem="Psv-Wa-Fm6" secondAttribute="bottom" constant="8" id="to8-a2-wAf"/>
+                        <constraint firstItem="dyi-Wh-7bQ" firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" id="xOf-Cs-1Bi"/>
+                        <constraint firstItem="Psv-Wa-Fm6" firstAttribute="trailing" secondItem="we1-Oa-lE1" secondAttribute="trailing" id="yA3-dE-6Hv"/>
+                        <constraint firstItem="nxW-Py-HrG" firstAttribute="top" secondItem="lHU-j4-Qnv" secondAttribute="top" constant="8" id="yh8-36-oQv"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cbD-T0-nVw">
+                    <rect key="frame" x="0.0" y="223" width="375" height="444"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="cbD-T0-nVw" secondAttribute="trailing" id="MZy-M2-03E"/>
+                <constraint firstItem="lHU-j4-Qnv" firstAttribute="leading" secondItem="w3u-JG-yJN" secondAttribute="leading" id="UFd-62-sCt"/>
+                <constraint firstAttribute="bottom" secondItem="cbD-T0-nVw" secondAttribute="bottom" id="cUk-hF-J9Z"/>
+                <constraint firstItem="cbD-T0-nVw" firstAttribute="leading" secondItem="w3u-JG-yJN" secondAttribute="leading" id="dbq-Tz-Mn5"/>
+                <constraint firstItem="cbD-T0-nVw" firstAttribute="top" secondItem="lHU-j4-Qnv" secondAttribute="bottom" id="iAE-gp-xlN"/>
+                <constraint firstItem="lHU-j4-Qnv" firstAttribute="top" secondItem="w3u-JG-yJN" secondAttribute="top" constant="64" id="kbJ-Za-Pzk"/>
+                <constraint firstAttribute="trailing" secondItem="lHU-j4-Qnv" secondAttribute="trailing" id="nap-Hm-vdi"/>
+            </constraints>
+            <point key="canvasLocation" x="25.5" y="92.5"/>
+        </view>
+    </objects>
+</document>

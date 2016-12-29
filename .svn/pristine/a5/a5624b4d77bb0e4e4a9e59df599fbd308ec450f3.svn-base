@@ -1,0 +1,262 @@
+//
+//  DetailFilmViewController.swift
+//  MockProject1
+//
+//  Created by Tuan anh Dang on 11/10/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class DetailFilmViewController: UIViewController {
+
+    @IBOutlet weak var imgFilm: UIImageView!
+    @IBOutlet weak var txtFilmName: UILabel!
+    @IBOutlet weak var txtKhoiChieu: UILabel!
+    @IBOutlet weak var txtTheLoai: UILabel!
+    @IBOutlet weak var txtThoiLuong: UILabel!
+    @IBOutlet weak var txtDaoDien: UILabel!
+    @IBOutlet weak var txtTenRap: UILabel!
+    @IBOutlet weak var tableDetailFilm: UITableView!
+    var index:IndexPath? = nil
+    var rowHeight:CGFloat? = 0
+    var phim:Phim? = nil
+    
+//    var arrTimeStart = [XuatChieu]()
+//    var arrDateStart = [LichChieu]()
+//    var arrTheater = [Rap]()
+    
+    var pickerTheater:UIPickerView!
+    var btnX:UIButton!
+    var viewTheater:UIView!
+    var isHide:Bool = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        
+        //set up tableview
+        tableDetailFilm.delegate = self
+        tableDetailFilm.dataSource = self
+        tableDetailFilm.estimatedRowHeight = 100
+        tableDetailFilm.register(UINib(nibName: "DetailContentTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_content")
+        tableDetailFilm.register(UINib(nibName: "DetailCinemaTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_cinema")
+        tableDetailFilm.register(UINib(nibName: "DetailTimeStartTableViewCell", bundle: nil), forCellReuseIdentifier: "cell_timestart")
+        
+        
+        //load detail film
+        prepareData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func prepareData(){
+        if phim != nil {
+            txtFilmName.text = phim?.tenPhim
+            txtDaoDien.text = "Đạo Diễn " + (phim?.daoDien)!
+            txtTheLoai.text = "Thể Loại: " + (phim?.theLoai)!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MM yyyy"
+            let date = dateFormatter.string(from: (phim?.ngayKhoiChieu)! as Date)
+            txtKhoiChieu.text = "Khởi Chiếu: " + date
+            txtThoiLuong.text = "Thời Lượng: " + String(format: "%d", (phim?.thoiLuong)!) + " Phút"
+            
+            //get theater
+            
+            
+//            arrTimeStart = DataManage.sharedInstance.getTimeStartFromFilm(id_Phim: String(format: "%d", (phim?.id_Phim)!))
+//            print(arrTimeStart)
+//            arrDateStart = DataManage.sharedInstance.getDateFromTimeStart(id_XuatChieu: String(format: "%d",arrTimeStart[0].id_XuatChieu))
+//            print(arrDateStart)
+//            arrTheater = DataManage.sharedInstance.getTheaterFromId_Rap(id_Rap: String(format: "%d", arrDateStart[0].id_Rap))
+//            print(arrTheater)
+            
+            txtTenRap.text = "Cụm Rạp: "
+//            for i in 0..<arrTheater.count {
+//                txtTenRap.text = txtTenRap.text! + " " + arrTheater[i].tenRap!
+//            }
+            
+        }
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension DetailFilmViewController:UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 || section == 1 {
+            return 1
+        }else{
+            return 4
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //section content of film
+        if indexPath.section == 0 {
+            var cell_content = tableDetailFilm.dequeueReusableCell(withIdentifier: "cell_content") as?DetailContentTableViewCell
+            if  cell_content == nil {
+                cell_content = DetailContentTableViewCell()
+            }
+            if phim != nil {
+                cell_content?.txtPhimNoiDung.text = phim?.noiDung
+            }
+            
+            return cell_content!
+        }
+        
+        //section theater of film
+        if indexPath.section == 1 {
+            var cell_cinema = tableDetailFilm.dequeueReusableCell(withIdentifier: "cell_cinema") as? DetailCinemaTableViewCell
+            if  cell_cinema == nil {
+                cell_cinema = DetailCinemaTableViewCell()
+            }
+            cell_cinema?.btnRap.titleLabel?.text = "Galaxy Nguyen Du"
+            cell_cinema?.btnRap.addTarget(self, action: #selector(clickRap), for: UIControlEvents.touchUpInside)
+            return cell_cinema!
+        }
+        
+        //section time start of film
+            var cell_timestart = tableDetailFilm.dequeueReusableCell(withIdentifier: "cell_timestart") as? DetailTimeStartTableViewCell
+            if  cell_timestart == nil {
+                cell_timestart = DetailTimeStartTableViewCell()
+            }
+        
+        
+        
+            var toaDo_X:CGFloat = 10
+            var toaDo_Y:CGFloat = 30
+        //number of time start
+        
+ //       let numberButton:Int = arrTimeStart.count > 0 ? arrTheater.count : 20
+            let numberButton = 1
+            for i in 0..<numberButton {
+
+                let button = UIButton(type: UIButtonType.custom)
+                button.addTarget(self, action: #selector(timeStart), for: UIControlEvents.touchUpInside)
+//                button.setTitle(arrTimeStart[i].gioChieu, for: .normal)
+                button.tag = indexPath.row
+                if i != 0 {
+                    toaDo_X += CGFloat((45 + 20) )
+                }
+                
+                if toaDo_X == self.view.frame.size.width || toaDo_X + CGFloat(45 + 20) > self.view.frame.size.width {
+                    toaDo_Y += 35
+                    print(toaDo_Y)
+                    toaDo_X = 10
+                }
+                button.frame = CGRect(x: toaDo_X, y: toaDo_Y, width: 45, height: 22)
+                button.layer.borderWidth = 1.00
+                button.layer.borderColor = UIColor.orange.cgColor
+                button.titleLabel?.font = UIFont.init(name: "Helvetica", size: 14)
+                button.layer.cornerRadius = 5.0
+                button.layer.masksToBounds = true
+                button.setTitleColor(UIColor.orange, for: .normal)
+                button.backgroundColor = UIColor.clear
+                cell_timestart?.contentView.addSubview(button)
+                
+
+            }
+        
+        rowHeight = toaDo_Y + 35
+        //cell_timestart?.txtNgayChieu.text = arrDateStart[]
+        return cell_timestart!
+    
+    
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return UITableViewAutomaticDimension
+        }
+        return rowHeight!
+    }
+    
+    func timeStart() {
+        print("abc")
+    }
+    
+    func clickRap() {
+        //self.pickerTheater.isHidden = false;
+        if isHide == false {
+            if pickerTheater == nil {
+                UIView.animate(withDuration: 0.3 ) {
+                    self.viewTheater = UIView(frame: CGRect(x: 0, y: (self.view.frame.size.height) - 175 , width: (self.view.frame.size.width), height: 175))
+                    self.viewTheater.backgroundColor = UIColor.orange
+                    
+                    self.btnX = UIButton(frame: CGRect(x: self.viewTheater.frame.size.width - 25, y: 0, width: 25, height: 25))
+                    self.btnX.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
+                    self.btnX.setTitle("X", for: .normal)
+                    
+                    self.pickerTheater = UIPickerView(frame: CGRect(x: 0, y: (self.viewTheater.frame.size.height) - 125, width: (self.viewTheater.frame.size.width), height: 125))
+                    self.pickerTheater.dataSource = self
+                    self.pickerTheater.delegate = self
+                    
+                    
+                    self.viewTheater.addSubview(self.btnX)
+                    self.viewTheater.addSubview(self.pickerTheater)
+                    
+                    UIView.animate(withDuration: 0.3 ) {
+                        self.view.addSubview(self.viewTheater)
+                    }
+                }
+            }else{
+                UIView.animate(withDuration: 0.3 ) {
+                    self.view.addSubview(self.viewTheater)
+                }
+                
+            }
+            
+            isHide = true
+            
+        }
+        
+    }
+    
+    func cancel() {
+        UIView.animate(withDuration: 1 ) {
+            self.viewTheater.removeFromSuperview()
+            self.isHide = false
+        }
+    }
+    
+}
+
+extension DetailFilmViewController:UIPickerViewDelegate,UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //return arrTheater.count > 0 ? arrTheater.count : 0
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //return arrTheater[row].tenRap
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.tableDetailFilm.reloadSections([2], with: UITableViewRowAnimation.automatic)
+        cancel()
+    }
+    
+
+}

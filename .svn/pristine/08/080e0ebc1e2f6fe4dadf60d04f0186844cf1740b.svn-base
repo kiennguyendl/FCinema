@@ -1,0 +1,71 @@
+//
+//  DetailCinemaTableViewCell.swift
+//  MockProject1
+//
+//  Created by Tuan anh Dang on 11/10/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class DetailCinemaTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var btnRap: UIButton!
+//    var pickerTheater:UIDatePicker!
+//    var btnX:UIButton!
+//    var viewTheater:UIView!
+//    var isHide:Bool = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+//    @IBAction func clickRap(_ sender: Any) {
+//        //self.pickerTheater.isHidden = false;
+//        if isHide == false {
+//            if pickerTheater == nil {
+//                UIView.animate(withDuration: 0.3 ) {
+//                    self.viewTheater = UIView(frame: CGRect(x: 0, y: (self.superview?.superview?.superview?.frame.size.height)! - 175 , width: (self.superview?.superview?.superview?.frame.size.width)!, height: 175))
+//                    self.viewTheater.backgroundColor = UIColor.orange
+//                    
+//                    self.btnX = UIButton(frame: CGRect(x: self.viewTheater.frame.size.width - 25, y: 0, width: 25, height: 25))
+//                    self.btnX.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
+//                    self.btnX.setTitle("X", for: .normal)
+//                    
+//                    self.pickerTheater = UIDatePicker(frame: CGRect(x: 0, y: (self.viewTheater.frame.size.height) - 125, width: (self.viewTheater.frame.size.width), height: 125))
+//                    
+//                    
+//                    self.viewTheater.addSubview(self.btnX)
+//                    self.viewTheater.addSubview(self.pickerTheater)
+//                    
+//                    UIView.animate(withDuration: 0.3 ) {
+//                    self.superview?.superview?.superview?.addSubview(self.viewTheater)
+//                    }
+//                }
+//            }else{
+//                UIView.animate(withDuration: 0.3 ) {
+//                    self.superview?.superview?.superview?.addSubview(self.viewTheater)
+//                }
+//                
+//            }
+//            
+//            isHide = true
+//            
+//        }
+//
+//    }
+    
+//    func cancel() {
+//        UIView.animate(withDuration: 1 ) {
+//        self.viewTheater.removeFromSuperview()
+//        self.isHide = false
+//        }
+//    }
+    
+
+}

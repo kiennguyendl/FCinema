@@ -1,0 +1,121 @@
+//
+//  UserInfoViewController.swift
+//  MockProject1
+//
+//  Created by Kien Nguyen Dang on 11/15/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class UserInfoViewController: UIViewController {
+
+    
+    
+    @IBOutlet weak var tableLichsugiaodich: UITableView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg_login.jpg")?.draw(in: self.view.bounds)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
+        
+        let settingButton = UIBarButtonItem(title: "Đăng xuất", style: .plain, target: self, action: #selector(self.Dangxuat))
+//        let settingButton = UIButton(type: .custom)
+//        settingButton.setImage(UIImage(named: "settingicon.jpg"), for: .normal)
+//        settingButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+//        settingButton.addTarget(self, action: #selector(self.Dangxuat), for: .touchUpInside)
+//        let rightBarButtonItem = UIBarButtonItem()
+//        rightBarButtonItem.customView = settingButton
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        self.navigationItem.rightBarButtonItem = settingButton
+        
+        tableLichsugiaodich.delegate = self
+        tableLichsugiaodich.dataSource = self
+        tableLichsugiaodich.rowHeight = UITableViewAutomaticDimension
+        tableLichsugiaodich.estimatedRowHeight = 100
+        tableLichsugiaodich.register(UINib(nibName: "UserInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+       
+//        self.navigationItem.hidesBackButton = true
+//        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(UserInfoViewController.back(sender:)))
+//        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    func Dangxuat() {
+        LoginViewController.isInstance.userInfo.removeObject(forKey: "SoDienThoai")
+        let vc = HomeViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func back(sender: UIBarButtonItem) {
+        
+        let vc = HomeViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+extension UserInfoViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    
+//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let lb = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.width, height: view.frame.height))
+//        lb.textColor = UIColor.black
+//        lb.text =  "LỊCH SỬ GIAO DỊCH"
+//        lb.backgroundColor = UIColor.orange
+//        lb.textAlignment = NSTextAlignment.center
+//        view.addSubview(lb)
+//    }
+//    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let lb = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.width, height: view.frame.height))
+        lb.textColor = UIColor.black
+        lb.text =  "LỊCH SỬ GIAO DỊCH"
+        lb.backgroundColor = UIColor.orange
+        lb.textAlignment = NSTextAlignment.center
+        return lb
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 40
+        }
+        return 40
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableLichsugiaodich.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        return cell
+    }
+}

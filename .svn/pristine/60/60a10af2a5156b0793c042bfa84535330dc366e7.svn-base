@@ -1,0 +1,171 @@
+//
+//  FilmOfCinemaViewController.swift
+//  Fcinema
+//
+//  Created by PhatVQ on 15/11/2016.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+
+class FilmOfCinemaViewController: UIViewController {
+
+    @IBOutlet weak var imgRap: UIImageView!
+    @IBOutlet weak var lbtenRap: UILabel!
+    @IBOutlet weak var lbdiaChi: UILabel!
+    @IBOutlet weak var lbSoDT: UILabel!
+    
+    @IBOutlet weak var tableview: UITableView!
+    
+    var rap:Rap? = nil
+    var arrPhim = [Phim]()
+    var arrLichChieu = [LichChieu]()
+    var arrXuatChieu = [XuatChieu]()
+    var dateNow:String? = nil
+   
+    
+    override func viewDidLoad() {
+
+        
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.register(UINib(nibName: "FilmOfCineTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateNow = dateFormatter.string(from: Date())
+        super.viewDidLoad()
+        
+        getData()
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func getData() {
+        // get Cinema's info selected
+        if rap != nil {
+            imgRap.image = UIImage(named: (rap?.hinhRap)!)
+            lbtenRap.text = rap?.tenRap
+            lbdiaChi.text = "🏩" + (rap?.diaChi)!
+            lbSoDT.text = "☎️" + (rap?.soDienThoai)!
+            
+            //get Film of Cinema selected
+            arrPhim = DataManager.defaultDataManager().getRowsFilm("select * from Phim, LichChieu WHERE Phim.id_Phim = LichChieu.id_Phim AND LichChieu.id_Rap = " + String(format: "%d", (rap?.id_Rap)!) + " GROUP BY Phim.id_Phim")
+            
+        }
+    }
+}
+extension FilmOfCinemaViewController:UITableViewDelegate,UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return arrPhim.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        var cell = self.tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? FilmOfCineTableViewCell
+        if  cell == nil {
+            cell = FilmOfCineTableViewCell()
+        }
+        
+        for item in (cell?.contentView.subviews)! {
+            if item.isMember(of: UIButton.self)
+            {
+                item.removeFromSuperview()
+            }
+        }
+        
+        var toaDo_X:CGFloat = 10
+        var toaDo_Y:CGFloat = 40
+        
+        if arrPhim.count > 0 {
+            arrLichChieu = DataManager.defaultDataManager().getRowsLichChieu("select * from LichChieu where LichChieu.id_Rap = " + String(format:"%d" , (rap?.id_Rap)!) + " and LichChieu.id_Phim = " + String(format:"%d" , arrPhim[indexPath.section].id_Phim!))
+            if arrLichChieu.count > 0 {
+                arrLichChieu = arrLichChieu.filter(){ $0.ngayChieu! > Date() ? true : false}
+                if arrLichChieu.count > 0 {
+                    arrXuatChieu = DataManager.defaultDataManager().getRowsXuatChieu("select * from XuatChieu where XuatChieu.id_LichChieu = " + String(format:"%d" ,arrLichChieu[indexPath.row].id_LichChieu!))
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    let date = dateFormatter.string(from: arrLichChieu[indexPath.row].ngayChieu!)
+                    cell?.lbNgayChieu.text = date
+                } else {
+                    cell?.lbNgayChieu.text = "Xuất chiếu sẽ cập nhật sau"
+                }
+            }
+        }
+        
+        if arrXuatChieu.count > 0 {
+            let numberButton = arrXuatChieu.count
+            for i in 0..<numberButton {
+                
+                let button = UIButton(type: UIButtonType.custom)
+                button.addTarget(self, action: #selector(timeStart), for: UIControlEvents.touchUpInside)
+                button.setTitle(arrXuatChieu[i].gioChieu, for: .normal)
+                button.tag = indexPath.row
+                if i != 0 {
+                    toaDo_X += CGFloat((45 + 20) )
+                }
+                
+                if toaDo_X == self.view.frame.size.width || toaDo_X + CGFloat(45 + 20) > self.view.frame.size.width {
+                    toaDo_Y += 35
+                    print(toaDo_Y)
+                    toaDo_X = 10
+                }
+                button.frame = CGRect(x: toaDo_X, y: toaDo_Y, width: 45, height: 22)
+                button.layer.borderWidth = 1.00
+                button.layer.borderColor = UIColor.orange.cgColor
+                button.titleLabel?.font = UIFont.init(name: "Helvetica", size: 14)
+                button.layer.cornerRadius = 5.0
+                button.setTitleColor(UIColor.orange, for: .normal)
+                button.backgroundColor = UIColor.clear
+                button.tag = arrXuatChieu[i].id_XuatChieu!
+                cell?.contentView.addSubview(button)
+                
+            }
+            arrXuatChieu.removeAll()
+        }
+        
+        return cell!
+    
+    }
+    func timeStart(sender:UIButton) {
+        let phone = DataManager.defaultDataManager().getPhone()
+        if  phone != "" {
+            //đã đăng nhập
+            print(sender.tag)
+            let vc = NumberTicKetViewController()
+            vc.id_XuatChieu = sender.tag
+            navigationController?.pushViewController(vc, animated: true)
+        }else{
+            //chưa đăng nhập
+            let alertController = UIAlertController(title: "Thống báo", message: "Bạn chưa đăng nhập", preferredStyle:UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self](UIAlertAction) in
+                guard let newSelf = self else{return}
+                let vc = LoginViewController()
+                newSelf.navigationController?.pushViewController(vc, animated: true)
+            }))
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return " "
+////        return arrPhim[section].tenPhim
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let lb = UILabel(frame: CGRect(x: 10, y: 0, width: view.frame.width, height: view.frame.height))
+        lb.textColor = #colorLiteral(red: 0.9942641854, green: 0.330311358, blue: 0.004172504414, alpha: 1)
+        lb.text =  "🎬 " + arrPhim[section].tenPhim!
+        view.addSubview(lb)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+}

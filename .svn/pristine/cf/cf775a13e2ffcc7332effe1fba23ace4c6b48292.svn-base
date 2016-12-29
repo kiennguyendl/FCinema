@@ -1,0 +1,71 @@
+//
+//  CinemaViewController.swift
+//  MockProject1
+//
+//  Created by PhatVQ on 12/11/2016.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class CinemaViewController: UIViewController {
+
+    @IBOutlet weak var tableview: UITableView!
+    
+    var arrCinema = [Rap]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.register(UINib(nibName: "CinemaTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        let dbCommand = "SELECT * FROM Rap"
+        let arrRap = DataManager.defaultDataManager().getRowsRap(dbCommand)
+        arrCinema = arrRap
+        
+    }
+    func showMenu(){
+        let vc = MenuViewController()
+        //self.navigationController?.navigationBar.backItem?.title = "back"
+        vc.navigationItem.backBarButtonItem?.title = "back"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func showUserInfo() {
+        let vc = LoginViewController()
+        //self.navigationController?.navigationBar.backItem?.title = "back"
+        vc.navigationItem.backBarButtonItem?.title = "back"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+extension CinemaViewController:UITableViewDataSource,UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return 2
+        return arrCinema.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CinemaTableViewCell
+        cell.Photo.image = UIImage(named: arrCinema[indexPath.row].hinhRap! + ".jpg")
+        cell.lbName.text = arrCinema[indexPath.row].tenRap
+        cell.lbAddress.text = "🏩" + arrCinema[indexPath.row].diaChi!
+        cell.lbPhone.text = "☎️" + arrCinema[indexPath.row].soDienThoai!
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+   
+}
+

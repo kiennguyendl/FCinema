@@ -1,0 +1,158 @@
+//
+//  DataManager.swift
+//  Fcinema
+//
+//  Created by Tuan anh Dang on 11/14/16.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+
+class DataManager: NSObject {
+    
+    static var sharedInstance:DataManager!
+    
+    
+    static func defaultDataManager() -> DataManager{
+        if sharedInstance == nil {//Neu doi tuong chua ton tai
+            //Khoi tao doi tuong
+            sharedInstance = DataManager()
+            //sharedInstance.copyFilePath()
+            
+        }
+        return sharedInstance
+    }
+    
+    func updateDatabase(_ dbCommand: String)
+    {
+        var updateStatement: OpaquePointer? = nil
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Fcinema.sqlite")
+        var db: OpaquePointer? = nil
+        if sqlite3_open(fileURL.path, &db) == SQLITE_OK {
+            if sqlite3_prepare_v2(db, dbCommand, -1, &updateStatement, nil) == SQLITE_OK {
+                if sqlite3_step(updateStatement) == SQLITE_DONE {
+                    //do nothing
+                } else {
+                    print("Could not updateDatabase")
+                }
+                } else {
+                    print("updateDatabase dbCommand could not be prepared")
+                }
+        
+                sqlite3_finalize(updateStatement)
+            
+        }
+        
+        sqlite3_close(db)
+        
+    }
+    
+    //MARK:  Update Database
+    
+
+    
+    func getRows(_ dbCommand: String) -> [Phim]
+    {
+        var outputArray: [Phim] = [Phim]()
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Fcinema.sqlite")
+        var getStatement: OpaquePointer? = nil
+        
+        var db: OpaquePointer? = nil
+        if sqlite3_open(fileURL.path, &db) == SQLITE_OK {
+            //do nothing
+            if sqlite3_prepare_v2(db, dbCommand, -1, &getStatement, nil) == SQLITE_OK {
+                while sqlite3_step(getStatement) == SQLITE_ROW {
+                    let film = Phim()
+                    let daoDien = String(cString: sqlite3_column_text(getStatement, Int32(2)))
+                    let id_Phim = sqlite3_column_int(getStatement, Int32(0))
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    let ngayKhoiChieu: Date = dateFormatter.date(from: String(cString: sqlite3_column_text(getStatement, Int32(5))))!
+                    let noiDung = String(cString: sqlite3_column_text(getStatement, Int32(6)))
+                    let tenPhim = String(cString: sqlite3_column_text(getStatement, Int32(1)))
+                    let theLoai = String(cString: sqlite3_column_text(getStatement, Int32(4)))
+                    let thoiLuong = sqlite3_column_int(getStatement, Int32(3))
+                    let url = String(cString: sqlite3_column_text(getStatement, Int32(8)))
+                    
+                    film.daoDien = daoDien
+                    film.id_Phim = Int(id_Phim)
+                    film.ngayKhoiChieu = ngayKhoiChieu
+                    film.noiDung = noiDung
+                    film.tenPhim = tenPhim
+                    film.theLoai = theLoai
+                    film.thoiLuong = Int(thoiLuong)
+                    film.url = url
+                    
+                    outputArray.append(film)
+                    
+                }
+                
+            } else {
+                print("getRows statement could not be prepared")
+            }
+            
+            sqlite3_finalize(getStatement)
+        }
+        
+
+        
+        sqlite3_close(db)
+        
+        return outputArray
+    }
+    
+    func getRowsFilm(_ dbCommand: String) -> [Phim]
+    {
+        var outputArray: [Phim] = [Phim]()
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Fcinema.sqlite")
+        var getStatement: OpaquePointer? = nil
+        
+        var db: OpaquePointer? = nil
+        if sqlite3_open(fileURL.path, &db) == SQLITE_OK {
+            //do nothing
+            if sqlite3_prepare_v2(db, dbCommand, -1, &getStatement, nil) == SQLITE_OK {
+                while sqlite3_step(getStatement) == SQLITE_ROW {
+                    let film = Phim()
+                    let daoDien = String(cString: sqlite3_column_text(getStatement, Int32(2)))
+                    let id_Phim = sqlite3_column_int(getStatement, Int32(0))
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd/MM/yyyy"
+                    let ngayKhoiChieu: Date = dateFormatter.date(from: String(cString: sqlite3_column_text(getStatement, Int32(5))))!
+                    let noiDung = String(cString: sqlite3_column_text(getStatement, Int32(6)))
+                    let tenPhim = String(cString: sqlite3_column_text(getStatement, Int32(1)))
+                    let theLoai = String(cString: sqlite3_column_text(getStatement, Int32(4)))
+                    let thoiLuong = sqlite3_column_int(getStatement, Int32(3))
+                    let url = String(cString: sqlite3_column_text(getStatement, Int32(8)))
+                    
+                    film.daoDien = daoDien
+                    film.id_Phim = Int(id_Phim)
+                    film.ngayKhoiChieu = ngayKhoiChieu
+                    film.noiDung = noiDung
+                    film.tenPhim = tenPhim
+                    film.theLoai = theLoai
+                    film.thoiLuong = Int(thoiLuong)
+                    film.url = url
+                    
+                    outputArray.append(film)
+                    
+                }
+                
+            } else {
+                print("getRows statement could not be prepared")
+            }
+            
+            sqlite3_finalize(getStatement)
+        }
+        
+        
+        
+        sqlite3_close(db)
+        
+        return outputArray
+    }
+    
+
+    
+}

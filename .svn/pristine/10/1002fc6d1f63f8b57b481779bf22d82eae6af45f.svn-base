@@ -1,0 +1,91 @@
+//
+//  CinemaViewController.swift
+//  MockProject1
+//
+//  Created by PhatVQ on 12/11/2016.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class CinemaViewController: UIViewController {
+
+    @IBOutlet weak var tableview: UITableView!
+    
+    var arrCinema = [Rap]()
+    //var arrImage = [UIImage(named:"cinema01"),UIImage(named:"cinema02"),UIImage(named:"cinema03"),UIImage(named:"cinema04"),UIImage(named:"cinema05"),UIImage(named:"cinema06"),UIImage(named:"cinema07"),UIImage(named:"cinema08"),UIImage(named:"cinema09"),UIImage(named:"cinema10")]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let userButton = UIButton()
+        userButton.setImage(UIImage(named: "usericon"), for: .normal)
+        userButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        userButton.addTarget(self, action: #selector(self.showUserInfo), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = userButton
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        //add menu button in left navigationbar
+        let menuButton = UIButton()
+        menuButton.setImage(UIImage(named: "menuicon"), for: .normal)
+        menuButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        menuButton.addTarget(self, action: #selector(self.showMenu), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = menuButton
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.register(UINib(nibName: "CinemaTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        let dbCommand = "SELECT * FROM Rap"
+        let arrRap = DataManager.defaultDataManager().getRowsRap(dbCommand)
+        arrCinema = arrRap
+//        for index in listCinema {
+//            arrCinema.append(index)
+//        }
+        
+        
+    }
+    func showMenu(){
+        let vc = MenuViewController()
+        //self.navigationController?.navigationBar.backItem?.title = "back"
+        vc.navigationItem.backBarButtonItem?.title = "back"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func showUserInfo() {
+        let vc = LoginViewController()
+        //self.navigationController?.navigationBar.backItem?.title = "back"
+        vc.navigationItem.backBarButtonItem?.title = "back"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+extension CinemaViewController:UITableViewDataSource,UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return 2
+        return arrCinema.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CinemaTableViewCell
+        //cell.Photo.image = arrImage[indexPath.row]
+        cell.lbName.text = arrCinema[indexPath.row].tenRap
+        cell.lbAddress.text = "🏩" + arrCinema[indexPath.row].diaChi!
+        cell.lbPhone.text = "☎️" + arrCinema[indexPath.row].soDienThoai!
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+   
+}
+

@@ -1,0 +1,103 @@
+//
+//  CinemaViewController.swift
+//  MockProject1
+//
+//  Created by PhatVQ on 12/11/2016.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class CinemaViewController: UIViewController {
+
+    @IBOutlet weak var tableview: UITableView!
+    var searchController:UISearchController!
+    
+    var arrCinema = [Rap]()
+    var searchResult:[Rap] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        //Customizing the Appearance of the Search Bar
+        searchController.searchBar.placeholder = "Tên rạp cần tìm ..."
+        searchController.searchBar.tintColor = UIColor.orange
+        searchController.searchBar.barTintColor = UIColor(red: 30.0/255.0, green:30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        tableview.tableHeaderView = searchController.searchBar
+    
+        
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.register(UINib(nibName: "CinemaTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        let dbCommand = "Select * From Rap"
+        let arrRap = DataManager.defaultDataManager().getRowsRap(dbCommand)
+        arrCinema = arrRap
+        
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+extension CinemaViewController:UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating,UISearchBarDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return self.searchResult.count
+        }else{
+            return self.arrCinema.count
+        }
+
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableview.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CinemaTableViewCell
+        if searchController.isActive && searchController.searchBar.text != ""{
+            cell.Photo.image = UIImage(named: searchResult[indexPath.row].hinhRap!)
+            cell.lbName.text = searchResult[indexPath.row].tenRap
+            cell.lbAddress.text = "🏩" + searchResult[indexPath.row].diaChi!
+            cell.lbPhone.text = "☎️" + searchResult[indexPath.row].soDienThoai!
+        }else {
+            cell.Photo.image = UIImage(named: arrCinema[indexPath.row].hinhRap!)
+            cell.lbName.text = arrCinema[indexPath.row].tenRap
+            cell.lbAddress.text = "🏩" + arrCinema[indexPath.row].diaChi!
+            cell.lbPhone.text = "☎️" + arrCinema[indexPath.row].soDienThoai!
+        }
+        return cell    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchController.isActive && searchController.searchBar.text != ""{
+            let rapSelected = searchResult[indexPath.row]
+            let vc = FilmOfCinemaViewController()
+            vc.rap = rapSelected
+            navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let rapSelected = arrCinema[indexPath.row]
+            let vc = FilmOfCinemaViewController()
+            vc.rap = rapSelected
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    func filterContentforSearch(searchString:String)
+    {
+        self.searchResult = self.arrCinema.filter(){nil != $0.tenRap?.range(of: searchString)}
+        self.tableview.reloadData()
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterContentforSearch(searchString: searchController.searchBar.text!)
+    }
+
+
+}
+

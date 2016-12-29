@@ -1,0 +1,55 @@
+//
+//  PlayTrailerViewController.swift
+//  Fcinema
+//
+//  Created by Tuan anh Dang on 11/18/16.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+import AVFoundation
+import AVKit
+
+class PlayTrailerViewController: UIViewController {
+
+    var urlYouTube:String = "http://www.youtube.com/watch?v=zPP6lXaL7KA&feature=youtube_gdata_player"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        
+
+    }
+
+    @IBAction func click(_ sender: Any) {
+        if urlYouTube != "" {
+            //let videoURL = NSURL(string: urlYouTube)
+            let url = URL(string: urlYouTube)
+            let player = AVPlayer(url: url!)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            self.present(playerViewController, animated: true) {
+                playerViewController.player!.play()
+            }
+            
+        }
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+

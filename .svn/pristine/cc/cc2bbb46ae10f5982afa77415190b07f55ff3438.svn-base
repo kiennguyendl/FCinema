@@ -1,0 +1,127 @@
+//
+//  HomeViewController.swift
+//  MockProject1
+//
+//  Created by Kien Nguyen Dang on 11/10/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class HomeViewController: UIViewController {
+    var arrFilmDidStart: [Phim] = []
+    var arrFilmWillStart: [Phim] = []
+    var arrData:[Phim] = []
+    @IBOutlet weak var segListfilm: UISegmentedControl!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    //check user is login or not
+    var isLogin = false
+    
+    //create variable singleton
+    static var isInstance = HomeViewController()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //add right button for navigationbar
+        let userButton = UIButton()
+        userButton.setImage(UIImage(named: "usericon"), for: .normal)
+        userButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        userButton.addTarget(self, action: #selector(self.showUserInfo), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = userButton
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        //add menu button in left navigationbar
+        let menuButton = UIButton()
+        menuButton.setImage(UIImage(named: "menuicon"), for: .normal)
+        menuButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        menuButton.addTarget(self, action: #selector(self.showMenu), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = menuButton
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+        let listFilm = DataManager.defaultDataManager().getRowsFilm("select * from Phim")
+        for index in listFilm{
+            if index.ngayKhoiChieu! <= Date(){
+                arrFilmDidStart.append(index)
+            }else{
+                arrFilmWillStart.append(index)
+            }
+        }
+        
+        arrData = arrFilmDidStart
+//        let data = DataManager.defaultDataManager()
+//        data.getRows("dfdh")
+        
+    }
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //show user info if user logged or show login if not
+    func showUserInfo() {
+        if !isLogin{
+            let vc = LoginViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }else{
+            let user = UserInfoViewController()
+            self.navigationController?.pushViewController(user, animated: true)
+        }
+    }
+    
+    func showMenu() {
+        let vc = MenuViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    @IBAction func segChangeValue(_ sender: Any) {
+        if segListfilm.selectedSegmentIndex == 0{
+            arrData = arrFilmDidStart
+            tableView.reloadData()
+        }else{
+            arrData = arrFilmWillStart
+            tableView.reloadData()
+        }
+    }
+
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
+        cell.imgPhim.image = UIImage(named: arrData[indexPath.row].hinhPhim!)
+        cell.lblTenPhim.text = arrData[indexPath.row].tenPhim
+        cell.lblTheloai.text = arrData[indexPath.row].theLoai
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filmSelect = arrData[indexPath.row]
+        let vc = DetailFilmViewController()
+        vc.phim = filmSelect
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+}

@@ -1,0 +1,218 @@
+//
+//  HomeViewController.swift
+//  MockProject1
+//
+//  Created by Kien Nguyen Dang on 11/10/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class HomeViewController: UIViewController {
+    var arrFilmDidStart: [Phim] = []
+    var arrFilmWillStart: [Phim] = []
+    var arrData:[Phim] = []
+    var arrFilterPhim:[Phim] = []
+    
+    @IBOutlet weak var segListfilm: UISegmentedControl!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var searchController:UISearchController!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //add right button for navigationbar
+        
+        //create back groud
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg_login.jpg")?.draw(in: self.view.bounds)
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
+        
+        //add menu button in right navigationbar
+        let userButton = UIButton()
+        userButton.setImage(UIImage(named: "user"), for: .normal)
+        userButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        userButton.addTarget(self, action: #selector(self.showUserInfo), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = userButton
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        //add menu button in left navigationbar
+        let menuButton = UIButton()
+        menuButton.setImage(UIImage(named: "Menu"), for: .normal)
+        menuButton.frame = CGRect(origin: CGPoint(x: 10, y: 10), size: CGSize(width: 40, height: 40))
+        menuButton.addTarget(self, action: #selector(self.showDSRap), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.customView = menuButton 
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //create search controller
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        //Customizing the Appearance of the Search Bar
+        searchController.searchBar.placeholder = "Tên phim cần tìm ..."
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor.orange
+        //searchController.searchBar.barTintColor = UIColor(red: 30.0/255.0, green:30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        
+        
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = 150
+        tableView.tableHeaderView = searchController.searchBar
+        //get list film from table film
+        var listFilm = DataManager.defaultDataManager().getRowsFilm("select * from Phim")
+        listFilm = listFilm.filter(){$0.ngayKetThuc! < Date() ? false: true}
+        for index in listFilm{
+            if index.ngayKhoiChieu! <= Date(){
+                arrFilmDidStart.append(index)
+            }else{
+                arrFilmWillStart.append(index)
+            }
+        }
+        arrData = arrFilmDidStart
+    }
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //show user info if user logged or show login if not
+    func showUserInfo() {
+        if LoginViewController.isInstance.userInfo.value(forKeyPath: "SoDienThoai") == nil{
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            //hiển thị tuỳ chọn cho người dùng nếu chưa đăng nhập hoặc chưa đăng ký
+            alert.addAction(UIAlertAction(title: "Đăng Nhập", style: .default, handler: { (action) in
+                let vc = LoginViewController()
+                self.present(vc, animated: true, completion: nil)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Đăng Ký", style: .default, handler: { (action) in
+                let vc = RegisterViewController()
+                self.present(vc, animated: true, completion: nil)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Huỷ", style: .default, handler: { (action) in
+//
+            }))
+            alert.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
+            self.present(alert, animated: true, completion: nil)
+
+        }else{
+            //hiển thị tuỳ chọn cho người dùng nếu đã đăng ký
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            //xem thông tin người dùng
+            alert.addAction(UIAlertAction(title: "Thông Tin", style: .default, handler: { (action) in
+                let vc = UserInfoViewController()
+                self.present(vc, animated: true, completion: nil)
+                
+            }))
+            //đăng xuất tài khoản
+            alert.addAction(UIAlertAction(title: "Đăng Xuất", style: .default, handler: { (action) in
+                
+                let alertController = UIAlertController(title: "Thông báo", message: "Bạn có chắc muốn đăng xuất", preferredStyle:UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self](UIAlertAction) in
+                    guard let newSelf = self else{return}
+                    LoginViewController.isInstance.userInfo.removeObject(forKey: "SoDienThoai")
+                    newSelf.dismiss(animated: true, completion: nil)
+                }))
+                alertController.addAction(UIAlertAction(title: "Huỷ", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Huỷ", style: .default, handler: { (action) in
+                
+            }))
+            alert.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    //hiển thị danh sách rạp
+    func showDSRap() {
+        let vc = CinemaViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //reload data when change segment
+    @IBAction func segChangeValue(_ sender: Any) {
+        if segListfilm.selectedSegmentIndex == 0{
+            arrData = arrFilmDidStart
+            tableView.reloadData()
+        }else{
+            arrData = arrFilmWillStart
+            tableView.reloadData()
+        }
+    }
+
+
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource,UISearchResultsUpdating,UISearchBarDelegate{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != ""{
+            return arrFilterPhim.count
+        }
+        return arrData.count
+    }
+    //load thông tin vào cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
+        if searchController.isActive && searchController.searchBar.text != ""{
+            cell.imgPhim.image = UIImage(named: arrFilterPhim[indexPath.row].hinhPhim!)
+            cell.lblTenPhim.text = "Phim: " + arrFilterPhim[indexPath.row].tenPhim!
+            cell.lblTheloai.text = "Thể loại: " + arrFilterPhim[indexPath.row].theLoai!
+            cell.lblDienVienDaoDien.text = "Diễn viên: " + arrFilterPhim[indexPath.row].dienVien!
+            cell.lblDaodien.text = "Đạo diễn: " + arrFilterPhim[indexPath.row].daoDien!
+        }else{
+            cell.imgPhim.image = UIImage(named: arrData[indexPath.row].hinhPhim!)
+            cell.lblTenPhim.text = "Phim: " + arrData[indexPath.row].tenPhim!
+            cell.lblTheloai.text = "Thể loại: " + arrData[indexPath.row].theLoai!
+            cell.lblDienVienDaoDien.text = "Diễn viên: " + arrData[indexPath.row].dienVien!
+            cell.lblDaodien.text = "Đạo diễn: " + arrData[indexPath.row].daoDien!
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filmSelect = arrData[indexPath.row]
+        let vc = DetailFilmViewController()
+        vc.phim = filmSelect
+        tableView.deselectRow(at: indexPath, animated: false)
+        navigationController?.pushViewController(vc, animated: true)
+        searchController.isActive = false
+    }
+    
+    //filter trên searchbar
+    func filterContentforSearch(searchString:String){
+        arrFilterPhim = arrData.filter(){nil != $0.tenPhim?.lowercased().folding(options: .diacriticInsensitive, locale: .current).range(of: searchString.lowercased().folding(options: .diacriticInsensitive, locale: .current))}
+        tableView.reloadData()
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterContentforSearch(searchString: searchController.searchBar.text!)
+    }
+    
+}

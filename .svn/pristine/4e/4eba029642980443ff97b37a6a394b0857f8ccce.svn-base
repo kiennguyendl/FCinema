@@ -1,0 +1,23 @@
+//
+//  Ghe.swift
+//  Fcinema
+//
+//  Created by Tuan anh Dang on 11/16/16.
+//  Copyright © 2016 Tuan anh Dang. All rights reserved.
+//
+
+import UIKit
+
+class Ghe: NSObject {
+    var id_Ghe:Int?
+    var tinhTrang:Bool?
+    var tenGhe:String?
+    var id_XuatChieu:Int?
+    override init() {
+        self.id_Ghe = nil
+        self.tinhTrang = false
+        self.tenGhe = ""
+        self.id_XuatChieu = nil
+    }
+
+}

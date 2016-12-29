@@ -1,0 +1,164 @@
+//
+//  RegisterViewController.swift
+//  MockProject1
+//
+//  Created by Kien Nguyen Dang on 11/11/16.
+//  Copyright © 2016 Kien Nguyen Dang. All rights reserved.
+//
+
+import UIKit
+
+class RegisterViewController: UIViewController {
+
+    @IBOutlet weak var txtHoTen: UITextField!
+    @IBOutlet weak var txtMatkhau: UITextField!
+    @IBOutlet weak var txtSodt: UITextField!
+    @IBOutlet weak var txtNhapLaiMatKhau: UITextField!
+        override func viewDidLoad() {
+        super.viewDidLoad()
+            
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "bg_login.jpg")?.draw(in: self.view.bounds)
+            
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            
+        UIGraphicsEndImageContext()
+            
+        self.view.backgroundColor = UIColor(patternImage: image)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        // Do any additional setup after loading the view.
+        txtMatkhau.isSecureTextEntry = true
+        txtNhapLaiMatKhau.isSecureTextEntry = true
+        txtHoTen.becomeFirstResponder()
+        txtSodt.keyboardType = UIKeyboardType.numberPad
+            
+        self.navigationItem.title = "Đăng ký"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func keyBoardWillChangeFrame(notification: NSNotification){
+        let keyBoardRect: CGRect = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue)!
+        let keyBoardAnimationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! CGFloat
+        for contrain in self.view.constraints {
+            if contrain.identifier == "centerY" {
+                contrain.constant = -fabs(self.view.frame.size.height - keyBoardRect.origin.y)/2
+                UIView.animate(withDuration: TimeInterval(keyBoardAnimationDuration), animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    
+    @IBAction func btnDangky(_ sender: Any) {
+        
+        var isExits: Bool = false
+        if txtHoTen.text == "" || txtSodt.text == "" || txtMatkhau.text == "" || txtNhapLaiMatKhau.text == ""
+        {
+            var str: String = ""
+            
+            if txtHoTen.text == ""{
+                str = str + "họ tên, "
+            }
+            if txtSodt.text == ""{
+                str = str + "số điện thoại, "
+            }
+            if txtMatkhau.text == ""{
+                str = str + "mật khẩu, "
+            }
+            if txtNhapLaiMatKhau.text == ""{
+                str = str + "nhập lại mật khẩu"
+            }
+            let mess = "Vui lòng điền đầy đủ thông tin vào ô " + str
+            showAlertDialog(Tilte: "Warning", message: mess, action: "OK")
+            return
+        }
+        
+        //check tài khoản đã tồn tại hay chưa
+        let listTK = DataManager.defaultDataManager().getRowTaiKhoan("select * from NguoiDung")
+        for index in listTK{
+            if txtSodt.text?.caseInsensitiveCompare(index.soDienThoai!) == .orderedSame{
+                isExits = true
+                showAlertDialog(Tilte: "", message: "Tài khoản đã tồn tại", action: "OK")
+                return
+            }
+        }
+        
+        //check mật khẩu nhập trùng hay chưa
+        if txtMatkhau.text?.caseInsensitiveCompare(txtNhapLaiMatKhau.text!) != .orderedSame{
+            txtMatkhau.text = ""
+            txtNhapLaiMatKhau.text = ""
+            txtNhapLaiMatKhau.becomeFirstResponder()
+            showAlertDialog(Tilte: "", message: "Mật khẩu không giống nhau, vui lòng nhập lại mật khẩu", action: "OK")
+            return
+        }
+        if !validatePhone(value: txtSodt.text!){
+            showAlertDialog(Tilte: "", message: "Số điện thoại không đúng định dạng, vui lòng nhập lại", action: "OK")
+            txtSodt.text = ""
+            txtSodt.becomeFirstResponder()
+            return
+        }
+        if !isExits{
+            _ = DataManager.defaultDataManager().updateDatabase("INSERT INTO NguoiDung (hoTen, soDienThoai, MatKhau) VALUES ('" + txtHoTen.text! + "', ' " + txtSodt.text! + " ', '" + txtMatkhau.text! + " ')")
+            
+            txtSodt.text = ""
+            txtHoTen.text = ""
+            txtMatkhau.text = ""
+            
+            LoginViewController.isInstance.userInfo.setValue(txtSodt.text, forKey: "SoDienThoai")
+            
+            let alert = UIAlertController(title: "", message: "Tạo tai khoản thành công", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Xem thông tin người dùng", style: UIAlertActionStyle.default, handler: {(action) in
+                self.viewUserInfoScreen()
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+    }
+
+    func viewUserInfoScreen() {
+        let vc = UserInfoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+        /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    func showAlertDialog(Tilte: String, message: String, action: String) {
+        let alert = UIAlertController(title: Tilte, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //validate phone
+    func validatePhone(value: String) -> Bool {
+        let PHONE_REGEX = "^[0]{1}[19]{1}[0-9]{8,9}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+    }
+
+}
